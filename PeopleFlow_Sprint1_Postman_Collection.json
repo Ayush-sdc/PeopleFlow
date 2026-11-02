@@ -1,0 +1,190 @@
+{
+	"info": {
+		"_postman_id": "peopleflow-sprint-1",
+		"name": "PeopleFlow - Sprint 1 APIs",
+		"description": "Postman Collection for PeopleFlow Sprint 1: Employee and Department Management REST APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Departments",
+			"item": [
+				{
+					"name": "Create Department",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Engineering\",\n    \"description\": \"Software development and engineering team\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/departments",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "departments"]
+						}
+					}
+				},
+				{
+					"name": "Get All Departments",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/departments?page=0&size=10&sortBy=name&direction=asc",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "departments"],
+							"query": [
+								{"key": "page", "value": "0"},
+								{"key": "size", "value": "10"},
+								{"key": "sortBy", "value": "name"},
+								{"key": "direction", "value": "asc"}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Department By ID",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/departments/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "departments", "1"]
+						}
+					}
+				},
+				{
+					"name": "Update Department",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Core Engineering\",\n    \"description\": \"Platform and infrastructure engineering team\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/departments/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "departments", "1"]
+						}
+					}
+				},
+				{
+					"name": "Delete Department",
+					"request": {
+						"method": "DELETE",
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/departments/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "departments", "1"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Employees",
+			"item": [
+				{
+					"name": "Create Employee",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"Rahul\",\n    \"lastName\": \"Sharma\",\n    \"email\": \"rahul@example.com\",\n    \"phone\": \"9876543210\",\n    \"jobTitle\": \"Software Engineer\",\n    \"joiningDate\": \"2026-11-01\",\n    \"salary\": 65000.00,\n    \"departmentId\": 1\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/employees",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "employees"]
+						}
+					}
+				},
+				{
+					"name": "Get All Employees (Pagination, Sort, Filter, Search)",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/employees?page=0&size=10&sortBy=firstName&direction=asc&departmentId=1&search=rahul",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "employees"],
+							"query": [
+								{"key": "page", "value": "0"},
+								{"key": "size", "value": "10"},
+								{"key": "sortBy", "value": "firstName"},
+								{"key": "direction", "value": "asc"},
+								{"key": "departmentId", "value": "1"},
+								{"key": "search", "value": "rahul"}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Employee By ID",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/employees/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "employees", "1"]
+						}
+					}
+				},
+				{
+					"name": "Update Employee",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"Rahul\",\n    \"lastName\": \"Sharma\",\n    \"email\": \"rahul@example.com\",\n    \"phone\": \"9876543210\",\n    \"jobTitle\": \"Senior Software Engineer\",\n    \"joiningDate\": \"2026-11-01\",\n    \"salary\": 85000.00,\n    \"departmentId\": 1\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/employees/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "employees", "1"]
+						}
+					}
+				},
+				{
+					"name": "Delete Employee",
+					"request": {
+						"method": "DELETE",
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/employees/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "employees", "1"]
+						}
+					}
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080"
+		}
+	]
+}
